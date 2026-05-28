@@ -1,0 +1,785 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Rustic Home</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#0b0b0b;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:white;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    .container{
+      width:90%;
+      max-width:1300px;
+      margin:auto;
+    }
+
+    section{
+      padding:100px 0;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(12px);
+      padding:25px 0;
+    }
+
+    .nav-container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      letter-spacing:2px;
+      color:#c8a96b;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:35px;
+    }
+
+    .nav-links a{
+      transition:0.3s;
+      font-size:15px;
+    }
+
+    .nav-links a:hover{
+      color:#c8a96b;
+    }
+
+    /* HERO */
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=80');
+
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-content{
+      max-width:700px;
+    }
+
+    .hero h1{
+      font-size:78px;
+      line-height:1.1;
+      margin-bottom:25px;
+    }
+
+    .hero p{
+      color:#d6d6d6;
+      line-height:1.8;
+      font-size:18px;
+      margin-bottom:40px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:16px 35px;
+      border-radius:50px;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .btn-primary{
+      background:#c8a96b;
+      color:black;
+      margin-right:15px;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px);
+    }
+
+    .btn-outline{
+      border:1px solid white;
+    }
+
+    .btn-outline:hover{
+      background:white;
+      color:black;
+    }
+
+    /* ABOUT */
+
+    .about{
+      background:#121212;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .split img{
+      border-radius:20px;
+    }
+
+    .section-title{
+      font-size:50px;
+      margin-bottom:25px;
+    }
+
+    .section-text{
+      color:#b8b8b8;
+      line-height:1.9;
+      font-size:16px;
+    }
+
+    /* AMENITIES */
+
+    .amenities-grid{
+      margin-top:60px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .amenity-card{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px;
+      padding:40px 30px;
+      transition:0.4s;
+      backdrop-filter:blur(10px);
+    }
+
+    .amenity-card:hover{
+      transform:translateY(-10px);
+      border-color:#c8a96b;
+    }
+
+    .amenity-card h3{
+      color:#c8a96b;
+      margin-bottom:15px;
+      font-size:22px;
+    }
+
+    .amenity-card p{
+      color:#bbb;
+      line-height:1.7;
+    }
+
+    /* GALLERY */
+
+    .gallery{
+      background:#121212;
+    }
+
+    .gallery-grid{
+      margin-top:60px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:20px;
+    }
+
+    .gallery-grid img{
+      height:350px;
+      object-fit:cover;
+      border-radius:20px;
+      transition:0.4s;
+    }
+
+    .gallery-grid img:hover{
+      transform:scale(1.03);
+    }
+
+    /* FLOOR PLAN */
+
+    .floor-plan{
+      text-align:center;
+    }
+
+    .floor-plan img{
+      max-width:1000px;
+      margin:auto;
+      margin-top:50px;
+      border-radius:20px;
+    }
+
+    /* LOCATION */
+
+    .location-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+      margin-top:60px;
+    }
+
+    .location-box{
+      background:#161616;
+      padding:40px;
+      border-radius:20px;
+    }
+
+    .location-box h3{
+      color:#c8a96b;
+      margin-bottom:15px;
+    }
+
+    .location-box p{
+      color:#bdbdbd;
+    }
+
+    /* VIDEO */
+
+    .video{
+      background:#121212;
+      text-align:center;
+    }
+
+    .video iframe{
+      width:100%;
+      height:600px;
+      border:none;
+      border-radius:20px;
+      margin-top:50px;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      text-align:center;
+    }
+
+    .contact-form{
+      max-width:700px;
+      margin:60px auto 0;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:18px;
+      background:#161616;
+      border:none;
+      margin-bottom:20px;
+      border-radius:12px;
+      color:white;
+      font-size:16px;
+    }
+
+    .contact-form button{
+      border:none;
+      cursor:pointer;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:black;
+      text-align:center;
+      padding:40px 0;
+      color:#777;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .split{
+        grid-template-columns:1fr;
+      }
+
+      .hero h1{
+        font-size:48px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .video iframe{
+        height:350px;
+      }
+
+      .section-title{
+        font-size:38px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="container nav-container">
+
+ <div class="logo" style="display:flex; align-items:center; gap:15px;">
+  <img src="log1.png" alt="Rustic Home Logo" style="width:100px; height:auto;">
+  
+  <span style="font-family:'Cinzel', serif; color:#c8a96b; font-size:22px; letter-spacing:2px;">
+    RUSTIC HOME
+  </span>
+</div>
+      <div class="nav-links">
+
+        <a href="#about">About</a>
+
+        <a href="#amenities">Features</a>
+
+        <a href="#gallery">Gallery</a>
+
+        <a href="#location">Location</a>
+
+        <a href="#contact">Contact</a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container hero-content">
+
+      <h1>
+        Crafting Timeless Luxury Spaces
+      </h1>
+
+      <p>
+        Rustic Home creates premium villas and sophisticated interiors
+        designed for modern luxury living with elegance,
+        comfort, and timeless architecture.
+      </p>
+
+      <a href="#contact" class="btn btn-primary">
+        Book Villa Tour
+      </a>
+
+      <a href="#gallery" class="btn btn-outline">
+        Explore Villas
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+
+    <div class="container split">
+
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80">
+
+      <div>
+
+        <h2 class="section-title">
+          About Rustic Home
+        </h2>
+
+        <p class="section-text">
+
+          Rustic Home is a luxury villa and interior brand focused on
+          creating elegant living experiences through modern architecture,
+          premium craftsmanship, and timeless design aesthetics.
+
+          Every villa is carefully designed with luxurious interiors,
+          spacious layouts, premium materials, and breathtaking surroundings
+          to deliver an unmatched lifestyle experience.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+
+  <section id="amenities">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Rustic Home Features
+      </h2>
+
+      <div class="amenities-grid">
+
+        <div class="amenity-card">
+
+          <h3>Infinity Pool</h3>
+
+          <p>
+            Relax in luxurious private pools with stunning panoramic views.
+          </p>
+
+        </div>
+
+        <div class="amenity-card">
+
+          <h3>Smart Home</h3>
+
+          <p>
+            Advanced home automation systems designed for modern living.
+          </p>
+
+        </div>
+
+        <div class="amenity-card">
+
+          <h3>Private Parking</h3>
+
+          <p>
+            Spacious secured parking areas for multiple luxury vehicles.
+          </p>
+
+        </div>
+
+        <div class="amenity-card">
+
+          <h3>Rooftop Terrace</h3>
+
+          <p>
+            Elegant rooftop spaces crafted for relaxation and entertainment.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GALLERY -->
+
+  <section class="gallery" id="gallery">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Rustic Home Showcase
+      </h2>
+
+      <div class="gallery-grid">
+
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80">
+
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80">
+
+        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=80">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FLOOR PLAN -->
+
+  <section class="floor-plan">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Rustic Home Floor Plans
+      </h2>
+
+      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80">
+
+    </div>
+
+  </section>
+
+  <!-- LOCATION -->
+
+  <section id="location">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Prime Locations
+      </h2>
+
+      <div class="location-grid">
+
+        <div class="location-box">
+
+          <h3>Airport</h3>
+
+          <p>15 Minutes Drive</p>
+
+        </div>
+
+        <div class="location-box">
+
+          <h3>Shopping Mall</h3>
+
+          <p>5 Minutes Away</p>
+
+        </div>
+
+        <div class="location-box">
+
+          <h3>International School</h3>
+
+          <p>Premium Schools Nearby</p>
+
+        </div>
+
+        <div class="location-box">
+
+          <h3>Hospital</h3>
+
+          <p>24/7 Healthcare Access</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- VIDEO -->
+
+  <section class="video">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Rustic Home Virtual Tour
+      </h2>
+
+      <iframe
+      src="https://www.youtube.com/embed/Scxs7L0vhZ4">
+      </iframe>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Begin Your Journey With Rustic Home
+      </h2>
+
+      <form class="contact-form">
+
+        <input type="text" placeholder="Full Name">
+
+        <input type="email" placeholder="Email Address">
+
+        <input type="tel" placeholder="Phone Number">
+
+        <textarea rows="6" placeholder="Tell us about your dream villa"></textarea>
+
+        <button class="btn btn-primary">
+          Send Inquiry
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+<!-- FOOTER -->
+<footer style="background:#0a0a0a; padding:90px 0 25px; border-top:1px solid rgba(255,255,255,0.08);">
+
+  <div class="container">
+
+    <!-- GRID -->
+    <div style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:40px; margin-bottom:60px;">
+
+      <!-- BRAND -->
+      <div>
+
+        <div style="display:flex; align-items:center; gap:15px; margin-bottom:15px;">
+          <img src="logo.jpg" alt="Rustic Home Logo" style="width:150px; height:auto;">
+
+          <h2 style="color:#c8a96b; font-size:24px; letter-spacing:2px; margin:0;">
+            RUSTIC HOME
+          </h2>
+        </div>
+
+        <p style="color:#a8a8a8; line-height:1.8; font-size:14px; max-width:320px;">
+          Rustic Home creates luxury villas with modern architecture,
+          premium interiors, and timeless elegance for elite living.
+        </p>
+
+      </div>
+
+      <!-- NAVIGATION -->
+      <div>
+        <h3 style="color:white; font-size:16px; margin-bottom:18px;">Navigation</h3>
+
+        <p><a href="#about" style="color:#a8a8a8; text-decoration:none;">About</a></p>
+        <p><a href="#amenities" style="color:#a8a8a8; text-decoration:none;">Features</a></p>
+        <p><a href="#gallery" style="color:#a8a8a8; text-decoration:none;">Gallery</a></p>
+        <p><a href="#location" style="color:#a8a8a8; text-decoration:none;">Location</a></p>
+        <p><a href="#contact" style="color:#a8a8a8; text-decoration:none;">Contact</a></p>
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <h3 style="color:white; font-size:16px; margin-bottom:18px;">Contact</h3>
+
+        <p style="color:#a8a8a8; display:flex; align-items:center; gap:10px; margin:10px 0;">
+          <span style="color:#e74c3c;">📧</span>
+          hello@rustichome.com
+        </p>
+
+        <p style="color:#a8a8a8; display:flex; align-items:center; gap:10px; margin:10px 0;">
+          <span style="color:#2ecc71;">📞</span>
+          +977 9800000000
+        </p>
+
+        <!-- FIND US -->
+        <p style="color:#a8a8a8; margin-top:15px; display:flex; align-items:center; gap:10px;">
+          <span style="display:flex; align-items:center; justify-content:center; width:26px; height:26px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3498db">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+            </svg>
+          </span>
+          Budhanilkantha, Kathmandu
+        </p>
+
+      </div>
+
+      <!-- MAP -->
+      <div>
+        <h3 style="color:white; font-size:16px; margin-bottom:18px;">Location</h3>
+
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.9866!2d85.3416!3d27.7723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1f3c1b0d0a6f%3A0x2c1b0d0c9c8b7c!2sBudhanilkantha!5e0!3m2!1sen!2snp!4v1700000000000"
+          width="100%"
+          height="180"
+          style="border:0; border-radius:12px;"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+      <!-- SOCIAL -->
+<div>
+  <h3 style="color:white; font-size:16px; margin-bottom:18px;">Follow Us</h3>
+
+  <div style="display:flex; flex-direction:column; gap:12px;">
+
+    <!-- Instagram -->
+    <a href="#" style="display:flex; align-items:center; gap:10px; color:#a8a8a8; text-decoration:none;">
+      <svg width="20" height="20" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#fdf497"/>
+            <stop offset="25%" stop-color="#fd5949"/>
+            <stop offset="50%" stop-color="#d6249f"/>
+            <stop offset="75%" stop-color="#285AEB"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#ig)"
+          d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3zm-5 4c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5z"/>
+      </svg>
+      Instagram
+    </a>
+
+    <!-- Facebook -->
+    <a href="#" style="display:flex; align-items:center; gap:10px; color:#a8a8a8; text-decoration:none;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
+        <path d="M22 12a10 10 0 1 0-11.5 9.95v-7.05H8v-2.9h2.5V9.9c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.75-1.6 1.5v1.8H17l-.5 2.9h-2.4V22A10 10 0 0 0 22 12z"/>
+      </svg>
+      Facebook
+    </a>
+
+    <!-- YouTube -->
+    <a href="#" style="display:flex; align-items:center; gap:10px; color:#a8a8a8; text-decoration:none;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000">
+        <path d="M23 7.5s-.2-1.7-.8-2.5c-.8-.9-1.6-.9-2-1C17.2 3.8 12 3.8 12 3.8s-5.2 0-8.2.2c-.4.1-1.2.1-2 1C1.2 5.8 1 7.5 1 7.5S0.8 9.5 0.8 11.5v1c0 2 .2 4 .2 4s.2 1.7.8 2.5c.8.9 1.9.9 2.4 1 1.8.2 7.8.2 7.8.2s5.2 0 8.2-.2c.4-.1 1.2-.1 2-1 .6-.8.8-2.5.8-2.5s.2-2 .2-4v-1c0-2-.2-4-.2-4zM10 15.5v-7l6 3.5-6 3.5z"/>
+      </svg>
+      YouTube
+    </a>
+
+    <!-- Pinterest -->
+    <a href="#" style="display:flex; align-items:center; gap:10px; color:#a8a8a8; text-decoration:none;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#E60023">
+        <path d="M12 2C6.5 2 3 5.5 3 10c0 3.5 2 5.5 4.5 6.5-.2-.6-.3-1.6 0-2.3.2-.6 1.3-4.5 1.3-4.5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.7 1.3 1.6 0 1-.6 2.6-.9 4.1-.3 1.3.7 2.4 2 2.4 2.4 0 4-2.5 4-5.7 0-2.3-1.6-4-4.4-4-3.2 0-5.2 2.4-5.2 4.9 0 1 .4 2 .9 2.6.1.1.1.2.1.4 0 .4-.1 1.2-.2 1.4-.1.2-.3.3-.5.2-1.8-.7-3-2.8-3-5.1 0-4.2 3.4-7.7 9.2-7.7 4.8 0 8.6 3.4 8.6 8 0 4.8-3 8.7-7.2 8.7-1.4 0-2.7-.7-3.1-1.5l-.8 3c-.3 1.2-1 2.7-1.5 3.6 1.1.3 2.2.4 3.4.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+      </svg>
+      Pinterest
+    </a>
+
+  </div>
+</div>
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:20px; text-align:center;">
+      <p style="color:#666; font-size:13px; margin:0;">
+        © 2026 Rustic Home. All Rights Reserved.
+      </p>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+</html>
