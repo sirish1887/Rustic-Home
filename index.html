@@ -364,6 +364,65 @@ nav{
   }
 }
 
+.mobile-menu-btn{
+  font-size:28px;
+  cursor:pointer;
+  color:#c8a96b;
+  user-select:none;
+  transition:0.3s;
+}
+
+.mobile-menu-btn:hover{
+  transform:scale(1.1);
+}
+
+.mobile-menu-btn{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+  color:#c8a96b;
+  z-index:2000;
+}
+
+/* MOBILE MENU */
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:75%;
+  height:100vh;
+  background:#0b0b0b;
+  padding:90px 30px;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+  transition:0.4s ease;
+  z-index:1500;
+  border-left:1px solid rgba(255,255,255,0.1);
+}
+
+.mobile-menu a{
+  font-size:18px;
+  color:#a8a8a8;
+  text-decoration:none;
+}
+
+/* OPEN STATE */
+.mobile-menu.active{
+  right:0;
+}
+
+/* SHOW ONLY ON MOBILE */
+@media(max-width:900px){
+  .mobile-menu-btn{
+    display:block;
+  }
+
+  .nav-links{
+    display:none;
+  }
+}
+
 /* FOOTER BASE */
 
 footer{
@@ -469,43 +528,49 @@ footer .container > div{
 
 <body>
 
-  <!-- NAVBAR -->
+<!-- NAVBAR -->
+<nav>
 
-  <nav>
+  <div class="container nav-container">
 
-    <div class="container nav-container">
+    <!-- LOGO -->
+    <a href="#top" style="text-decoration:none; display:flex; align-items:center; gap:15px;">
 
- <div class="logo" style="display:flex; align-items:center; gap:15px;">
-  <img src="log1.png" alt="Rustic Home Logo" style="width:100px; height:auto;">
-  
-  <span style="font-family:'Cinzel', serif; color:#c8a96b; font-size:22px; letter-spacing:2px;">
-    RUSTIC HOME
-  </span>
-</div>
-      <div class="nav-links">
+      <div class="logo" style="display:flex; align-items:center; gap:15px;">
 
-        <a href="#about">About</a>
+        <img src="log1.png" alt="Rustic Home Logo" style="width:100px; height:auto;">
 
-        <a href="#amenities">Features</a>
+        <span style="font-family:'Cinzel', serif; color:#c8a96b; font-size:22px; letter-spacing:2px;">
+          RUSTIC HOME
+        </span>
 
-        <a href="#gallery">Gallery</a>
+      </div>
 
-        <a href="#location">Location</a>
+    </a>
 
-        <a href="#contact">Contact</a>
+    <!-- NAV LINKS -->
+    <div class="nav-links">
 
-        
-       </div>
-      <div class="mobile-menu-btn" onclick="toggleMenu()">
-  ☰
-</div>
+      <a href="#about">About</a>
+      <a href="#amenities">Features</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#location">Location</a>
+      <a href="#contact">Contact</a>
 
     </div>
 
-  </nav>
+    <!-- MOBILE BUTTON -->
+   
+<div class="mobile-menu-btn" onclick="toggleMenu()">
+  <span id="menuIcon">☰</span>
+</div>
+
+  </div>
 
 
-  <div id="mobileMenu" class="mobile-menu">
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
 
   <a href="#about" onclick="toggleMenu()">About</a>
   <a href="#amenities" onclick="toggleMenu()">Features</a>
@@ -514,6 +579,7 @@ footer .container > div{
   <a href="#contact" onclick="toggleMenu()">Contact</a>
 
 </div>
+</nav>
 
   <!-- HERO -->
 
@@ -916,6 +982,22 @@ footer .container > div{
 function toggleMenu(){
   document.getElementById("mobileMenu").classList.toggle("active");
 }
+
+function toggleMenu() {
+  const menu = document.getElementById("mobileMenu");
+  const icon = document.getElementById("menuIcon");
+
+  if (!menu || !icon) return; // safety check
+
+  menu.classList.toggle("active");
+
+  if (menu.classList.contains("active")) {
+    icon.textContent = "✖";
+  } else {
+    icon.textContent = "☰";
+  }
+}
+
 </script>
 </body>
 </html>
